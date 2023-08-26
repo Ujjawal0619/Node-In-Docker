@@ -1,10 +1,9 @@
 const http = require("http");
-const PORT = process.env.PORT;
+const os = require("os");
+const PORT = process.env.PORT | 3000;
 
 const server = http.createServer((req, res) => {
-  res.statusCode = 202;
-  res.write(JSON.stringify({ msg: "Hello There!" }));
-  res.end();
+  res.end(JSON.stringify({ hostname: os.hostname(), status: "running" }));
 });
 
 server.listen(PORT, () => {
